@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 {
 	INFO_LOG("Initialize Engine...")
 
-	Jackster::MemoryTracker::Initialize();
+	//Jackster::MemoryTracker::Initialize();
 	Jackster::seedRandom((unsigned int)time(nullptr));
 	Jackster::setFilePath("assets");
 
