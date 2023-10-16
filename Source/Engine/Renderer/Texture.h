@@ -3,8 +3,6 @@
 #include "glm/glm/glm.hpp"
 #include "glad/include/glad/glad.h"
 
-struct SDL_Texture;
-
 namespace Jackster
 {
 	class Texture : public Resource

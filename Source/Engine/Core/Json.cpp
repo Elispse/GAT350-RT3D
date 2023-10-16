@@ -81,7 +81,7 @@ namespace Jackster
 		return true;
 	}
 
-	bool Json::Read(const rapidjson::Value& value, const std::string& name, vec2& data, bool required)
+	bool Json::Read(const rapidjson::Value& value, const std::string& name, glm::vec2& data, bool required)
 	{
 		// check if 'name' member exists and is an array with 2 elements
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 2)
@@ -108,10 +108,10 @@ namespace Jackster
 		return true;
 	}
 
-	bool Json::Read(const rapidjson::Value& value, const std::string& name, Color& data, bool required)
+	bool Json::Read(const rapidjson::Value& value, const std::string& name, glm::vec3& data, bool required)
 	{
-		// check if 'name' member exists and is an array with 2 elements
-		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 4)
+		// check if 'name' member exists and is an array with 3 elements
+		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 3)
 		{
 			if (required) ERROR_LOG("Cannot read required json data: " << name.c_str());
 			return false;
@@ -134,10 +134,9 @@ namespace Jackster
 		return true;
 	}
 
-
-	bool Json::Read(const rapidjson::Value& value, const std::string& name, Rect& data, bool required)
+	bool Json::Read(const rapidjson::Value& value, const std::string& name, glm::vec4& data, bool required)
 	{
-		// check if 'name' member exists and is an array with 2 elements
+		// check if 'name' member exists and is an array with 4 elements
 		if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 4)
 		{
 			if (required) ERROR_LOG("Cannot read required json data: " << name.c_str());
@@ -155,7 +154,7 @@ namespace Jackster
 				return false;
 			}
 
-			data[i] = array[i].GetInt();
+			data[i] = array[i].GetFloat();
 		}
 
 		return true;
