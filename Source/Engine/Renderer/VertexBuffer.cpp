@@ -60,7 +60,7 @@ namespace Jackster
 		}
 
 		// copy data into index buffer
-		glBufferData(m_ibo, size, data, count);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 		
 	void VertexBuffer::SetAttribute(int attribindex, GLint size, GLsizei stride, GLuint offset)
