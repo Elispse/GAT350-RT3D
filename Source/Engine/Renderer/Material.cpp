@@ -42,9 +42,14 @@ namespace Jackster
 	{
 		m_program->Use();
 
-		m_program->SetUniform("color", color);
-		m_program->SetUniform("tiling", tiling);
-		m_program->SetUniform("offset", offset);
+		m_program->SetUniform("material.color", color);
+		m_program->SetUniform("material.tiling", tiling);
+		m_program->SetUniform("material.offset", offset);
+
+		//lighting
+		m_program->SetUniform("light.position", lightPosition);
+		m_program->SetUniform("light.color", ambientColor);
+		m_program->SetUniform("light.color", diffuseColor);
 
 		for (size_t i = 0; i < m_textures.size(); i++)
 		{
@@ -59,6 +64,14 @@ namespace Jackster
 		ImGui::ColorEdit4("Color", &color[0]);
 		ImGui::DragFloat2("Tiling", glm::value_ptr(tiling), 0.1f);
 		ImGui::DragFloat2("Offset", glm::value_ptr(offset), 0.1f);
+
+		ImGui::End();
+
+		ImGui::Begin("Lighting");
+
+		ImGui::DragFloat3("Position", &m_transform.position[1], 0.1f);
+		ImGui::ColorEdit4("AmbientColor", &ambientColor[0]);
+		ImGui::ColorEdit4("DiffuseColor", &diffuseColor[0]);
 
 		ImGui::End();
 	}
