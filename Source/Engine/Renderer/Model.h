@@ -26,7 +26,7 @@ namespace Jackster
 		bool Load(const std::string& filename);
 		void Draw(GLenum primitive = GL_TRIANGLES);
 
-		void SetMaterial(res_t<Material> material) { m_material; }
+		void SetMaterial(res_t<Material> material) { m_material = material; }
 		res_t<Material> GetMaterial() { return m_material; }
 
 	private:

@@ -11,7 +11,7 @@ namespace Jackster
         auto material = GET_RESOURCE(Material, "Materials/grid.mtrl");
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("Models/cube.obj");
+        m_model->Load("Models/Gear2.obj");
 
         return true;
     }
@@ -37,10 +37,12 @@ namespace Jackster
 
         //model matrix
         material->GetProgram()->SetUniform("model", m_transform.GetMatrix());
-        //view matrix
-        material->GetProgram()->SetUniform("view", m_transform.GetMatrix());
+        //view 
+        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 3 }, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
+        material->GetProgram()->SetUniform("view", view);
         //projection matrix
-        material->GetProgram()->SetUniform("projection", m_transform.GetMatrix());
+        glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+        material->GetProgram()->SetUniform("projection", projection);
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
@@ -50,8 +52,8 @@ namespace Jackster
         // pre-render
         renderer.BeginFrame();
         // render
-        ENGINE.GetSystem<Gui>()->Draw();
         m_model->Draw(GL_TRIANGLES);
+        ENGINE.GetSystem<Gui>()->Draw();
         // post-render
         renderer.EndFrame();
     }

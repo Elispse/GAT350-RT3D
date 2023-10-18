@@ -25,7 +25,7 @@ namespace Jackster
 		// read the textures name
 		std::vector<std::string> textures;
 		READ_DATA(document, textures);
-		for (auto texture : textures)
+		for (auto& texture : textures)
 		{
 			// get texture resource
 			m_textures.push_back(GET_RESOURCE(Texture, texture));
