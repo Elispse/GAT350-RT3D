@@ -6,6 +6,24 @@
 
 namespace Jackster
 {
+	struct light_t
+	{
+		enum eType
+		{
+			Point,
+			Directional,
+			Spot
+		};
+
+		int type;
+		glm::vec3 position;
+		glm::vec3 direction;
+		glm::vec3 color;
+		float intensity;
+		float innerAngle;
+		float outerAngle;
+	};
+
 	class World04 : public World
 	{
 	public:
@@ -17,6 +35,9 @@ namespace Jackster
 	private:
 		float m_time;
 		float m_speed = 5;
+
+		light_t m_light;
+		glm::vec3 m_ambientColor{ 0.4, 0.4, 0.4 };
 
 		Transform m_transform;
 		res_t<Model> m_model;

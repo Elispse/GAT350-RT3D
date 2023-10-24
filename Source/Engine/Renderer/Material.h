@@ -1,7 +1,6 @@
 #pragma once
 #include "Framework/Resource/Resource.h"
 #include "GUI.h"
-#include "Core/Math/Transform.h"
 #include <glm/glm/glm.hpp>
 #include <vector>
 #include <memory> 
@@ -23,17 +22,16 @@ namespace Jackster
 		void ProcessGui();
 
 	public:
-		glm::vec4 color{ 1 };
+		glm::vec3 diffuse{ 1 };
+		glm::vec3 specular{ 1 };
+		float shininess = 2;
 		glm::vec2 tiling{ 1, 1 };
 		glm::vec2 offset{ 0, 0 };
-
-		glm::vec3 lightPosition;
-		glm::vec3 ambientColor;
-		glm::vec3 diffuseColor;
+	
+		
 
 	private:
 		res_t<Program> m_program;
 		std::vector<res_t<Texture>> m_textures;
-		Transform m_transform;
 	};
 }
