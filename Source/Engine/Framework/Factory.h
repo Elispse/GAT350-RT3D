@@ -5,10 +5,8 @@
 #include <map>
 #include <string>
 
-#define CREATE_CLASS(classname) Jackster::Factory::Instance().Create<Jackster::classname>(#classname);
+#define CREATE_CLASS(class) Jackster::Factory::Instance().Create<Jackster::class>(#class);
 #define CREATE_CLASS_BASE(classbase, classname) Jackster::Factory::Instance().Create<Jackster::classbase>(classname);
-#define INSTANTIATE(classname) Jackster::Factory::Instance().Create<Jackster::Actor>(classname);
-#define INSTANTIATE_BASE(classbase, classname) Jackster::Factory::Instance().Create<Jackster::classbase>(classname);
 
 namespace Jackster
 {

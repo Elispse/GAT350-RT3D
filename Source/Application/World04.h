@@ -20,6 +20,7 @@ namespace Jackster
 		glm::vec3 direction;
 		glm::vec3 color;
 		float intensity;
+		float range;
 		float innerAngle;
 		float outerAngle;
 	};
@@ -36,7 +37,10 @@ namespace Jackster
 		float m_time;
 		float m_speed = 5;
 
-		light_t m_light;
+		//light_t m_light;
+		//light_t m_lights[3];
+		std::vector<light_t> m_lights;
+		int m_selected = 0;
 		glm::vec3 m_ambientColor{ 0.4, 0.4, 0.4 };
 
 		Transform m_transform;
