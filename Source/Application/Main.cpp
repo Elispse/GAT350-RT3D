@@ -28,6 +28,7 @@ int main(int argc, char* argv[])
 	cout << stringUtils.toUpper("Hello, World!") << endl;
 	cout << stringUtils.toLower("Hello, World!") << endl;
 	std::cout << (stringUtils.IsEqualIgnoreCase("TeSt", "tEsTs") ? "true" : "false") << std::endl;
+	std::cout << (stringUtils.IsEqualIgnoreCase("TeSt", "tEsT") ? "true" : "false") << std::endl;
 	cout << stringUtils.CreateUnique("Hello, World!") << endl;
 	cout << stringUtils.CreateUnique("Hello, World!") << endl;
 
