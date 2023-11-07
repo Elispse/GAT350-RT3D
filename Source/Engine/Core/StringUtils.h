@@ -14,7 +14,7 @@ namespace Jackster
 		bool IsEqualIgnoreCase(std::string input1, std::string input2);
 		// function takes a string as input and appends a static unsigned integer to it. 
 		// The integer should increment with each call, ensuring a unique string each time.
-		std::string CreateUnique(std::string input);
+		std::string CreateUnique(const std::string& str);
 	private:
 		unsigned int uniNum = 0;
 	};

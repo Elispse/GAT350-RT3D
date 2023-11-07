@@ -18,6 +18,8 @@ namespace Jackster
 		float m_time;
 		float m_speed = 5;
 
+		float m_refraction = 1;
+
 		glm::vec3 m_ambientColor{ 0.4, 0.4, 0.4 };
 	};
 }

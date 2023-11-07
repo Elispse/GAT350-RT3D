@@ -23,9 +23,10 @@ namespace Jackster
 	{
 		// set view matrix with glm::lookAt function, use owner position
 		// view = glm::lookAt(<owner transform position>, <owner transform position + owner transform forward>, <up vector>);
+		view = glm::lookAt(this->m_owner->transform.position, this->m_owner->transform.position + this->m_owner->transform.Forward(), m_owner->transform.Up());
 		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
 		// projection = glm::perspective(<parameters>);
-		//view = glm::lookAt();
+		projection = glm::perspective(glm::radians(fov), aspect, 0.01f, 100.0f);
 	}
 
 	void CameraComponent::SetPerspective(float fov, float aspect, float near, float far)
@@ -38,7 +39,7 @@ namespace Jackster
 
 		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
 		// projection = glm::perspective(<parameters>);
-		projection = glm::perspective(DegreesToRadians(this->fov), this->aspect, this->near, this->far);
+		projection = glm::perspective(glm::radians(this->fov), this->aspect, this->near, this->far);
 	}
 
 	void CameraComponent::SetLookAt(const glm::vec3& eye, const glm::vec3& center, const glm::vec3& up)
@@ -59,10 +60,20 @@ namespace Jackster
 	void CameraComponent::ProcessGui()
 	{
 		// use ImGui::DragFloat to set fov, aspect, near and far values (use speed of 0.1f)
+		ImGui::Begin("Camera Controls");
+		ImGui::DragFloat("fov", &fov, 0.1f);
+		ImGui::DragFloat("aspect", &aspect, 0.1f);
+		ImGui::DragFloat("near", &near, 0.1f);
+		ImGui::DragFloat("far", &far, 0.1f);
+		ImGui::End();
 	}
 
 	void CameraComponent::Read(const json_t& value)
 	{
 		// READ_DATA of fov, aspect, near and far values
+		READ_DATA(value, fov);
+		READ_DATA(value, aspect);
+		READ_DATA(value, near);
+		READ_DATA(value, far);
 	}
 }

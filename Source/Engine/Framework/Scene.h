@@ -35,9 +35,9 @@ namespace Jackster
 	public:
 		glm::vec3 ambientColor{0.2f};
 
+		std::list<std::unique_ptr<Actor>> m_actors;
 	private:
 		World* m_game = nullptr;
-		std::list<std::unique_ptr<Actor>> m_actors;
 	};
 
 	template<typename T>

@@ -3,7 +3,6 @@
 #include "World03.h"
 #include "World04.h"
 #include "World05.h"
-#include "Core/StringUtils.h"
 #include "Core/Core.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
@@ -20,17 +19,8 @@ int main(int argc, char* argv[])
 
 	ENGINE.Initialize();
 
-	auto world = make_unique<Jackster::World04>();
+	auto world = make_unique<Jackster::World05>();
 	world->Initialize();
-
-	Jackster::StringUtils stringUtils;
-
-	cout << stringUtils.toUpper("Hello, World!") << endl;
-	cout << stringUtils.toLower("Hello, World!") << endl;
-	std::cout << (stringUtils.IsEqualIgnoreCase("TeSt", "tEsTs") ? "true" : "false") << std::endl;
-	std::cout << (stringUtils.IsEqualIgnoreCase("TeSt", "tEsT") ? "true" : "false") << std::endl;
-	cout << stringUtils.CreateUnique("Hello, World!") << endl;
-	cout << stringUtils.CreateUnique("Hello, World!") << endl;
 
 	// main loop
 	bool quit = false;

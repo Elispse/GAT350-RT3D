@@ -30,7 +30,7 @@ namespace Jackster
         if (ENGINE.GetSystem<InputSystem>()->GetMouseButtonDown(0))
         {
             auto position = ENGINE.GetSystem<InputSystem>()->GetMousePosition();
-            position /= vec2{ ENGINE.GetSystem<Renderer>()->GetWidth(), ENGINE.GetSystem<Renderer>()->GetHeight() };
+            position /= glm::vec2{ ENGINE.GetSystem<Renderer>()->GetWidth(), ENGINE.GetSystem<Renderer>()->GetHeight() };
             position *= 2;
             position -= 1;
             position.y *= -1;

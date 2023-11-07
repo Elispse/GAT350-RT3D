@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Framework/Components/lightComponent.h"
+#include "Framework/Components/CameraComponent.h"
 
 namespace Jackster
 {
@@ -36,6 +37,21 @@ namespace Jackster
 			}
 		}
 
+		// get camera component
+		CameraComponent* camera = nullptr;
+		for (auto& actor : m_actors)
+		{
+			if (!actor->active) continue;
+
+			//<get camera component from actor>
+			camera = actor->GetComponent<CameraComponent>();
+			//<if camera is valid, break out of for loop>
+			if (camera)
+			{
+				break;
+			}
+		}
+
 		// get all shader programs in the resource system
 		auto programs = ResourceManager::Instance().GetAllOfType<Program>();
 		// set all shader programs camera and lights uniforms
@@ -43,6 +59,8 @@ namespace Jackster
 		{
 			program->Use();
 
+			// set camera in shader program
+			if (camera) camera->SetProgram(program);
 			// set lights in shader program
 			int index = 0;
 			for (auto light : lights)
@@ -125,7 +143,6 @@ namespace Jackster
 		ImGui::Separator();
 
 
-
 		for (auto& actor : m_actors)
 		{
 			if (ImGui::Selectable(actor->name.c_str(), actor->guiSelect))
@@ -144,6 +161,7 @@ namespace Jackster
 		{
 			(*iter)->ProcessGui();
 		}
+
 		ImGui::End();
 	}
 }
