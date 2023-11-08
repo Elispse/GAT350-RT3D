@@ -28,7 +28,7 @@ void main()
 	// get view right direction
 	vec3 right = vec3(view[0][0], view[1][0], view[2][0]);
 	// get view up direction
-	vec3 up = vec3(view[0][1], view[1][1], view[2][1]);
+	vec3 up = vec3(0, 1, 0);
 
 	// set vertex position (local) using world position and view direction
 	position = position + (vposition.x * right * size.x) + (vposition.y * up * size.y);

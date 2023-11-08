@@ -3,12 +3,15 @@
 #include "Input/InputSystem.h"
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <glm/glm/gtx/color_space.hpp>
+#include "Core/StringUtils.h"
 
 
 namespace Jackster
 {
+
 	bool World05::Initialize()
 	{
+		StringUtils stringUtils;
 		m_scene = std::make_unique<Scene>();
 		m_scene->Load("Scenes/scene.json");
 		m_scene->Initialize();
@@ -46,6 +49,16 @@ namespace Jackster
 			cameraController->Initialize();
 			actor->AddComponent(std::move(cameraController));
 
+			m_scene->Add(std::move(actor));
+		}
+
+		for (int i = 0; i < 10; i++)
+		{
+			auto actor = CREATE_CLASS_BASE(Actor, "tree");
+			actor->name = stringUtils.CreateUnique("tree");
+			actor->transform.position = glm::vec3{ randomf(-10, 10), 0 , randomf(-10, 10) };
+			actor->transform.scale = glm::vec3{ random(0.5f, 3.0f), random(0.5f, 3.0f), 0 };
+			actor->Initialize();
 			m_scene->Add(std::move(actor));
 		}
 
