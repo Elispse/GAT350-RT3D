@@ -43,6 +43,11 @@ namespace Jackster
 		m_vertexBuffer->Draw(primitive);
 	}
 
+	void Model::Rotate(float angle, const glm::vec3& axis)
+	{
+		glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), angle, axis);
+	}
+
 	void Model::ProcessNode(aiNode* node, const aiScene* scene, const glm::mat4& transform)
 	{
 		// process the current node meshes

@@ -3,6 +3,7 @@
 #include "World03.h"
 #include "World04.h"
 #include "World05.h"
+#include "World06.h"
 #include "Core/Core.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
@@ -13,13 +14,12 @@ int main(int argc, char* argv[])
 {
 	INFO_LOG("Initialize Engine...")
 
-	//Jackster::MemoryTracker::Initialize();
 	Jackster::seedRandom((unsigned int)time(nullptr));
 	Jackster::setFilePath("assets");
 
 	ENGINE.Initialize();
 
-	auto world = make_unique<Jackster::World05>();
+	auto world = make_unique<Jackster::World06>();
 	world->Initialize();
 
 	// main loop

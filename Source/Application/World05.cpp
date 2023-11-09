@@ -3,8 +3,6 @@
 #include "Input/InputSystem.h"
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <glm/glm/gtx/color_space.hpp>
-#include "Core/StringUtils.h"
-
 
 namespace Jackster
 {
@@ -15,52 +13,6 @@ namespace Jackster
 		m_scene = std::make_unique<Scene>();
 		m_scene->Load("Scenes/scene.json");
 		m_scene->Initialize();
-
-		{
-			auto actor = CREATE_CLASS(Actor);
-			actor->name = "light1";
-			actor->transform.position = glm::vec3{ 3, 3, 3 };
-			auto lightComponent = CREATE_CLASS(LightComponent);
-			lightComponent->type = LightComponent::eType::Point;
-			//lightComponent->color = glm::rgbColor(glm::vec3{ randomf() * 360, 1, 1 });
-			lightComponent->color = glm::vec3{ 1 ,1 ,1 };
-			lightComponent->intensity = 1;
-			lightComponent->range = 20;
-			lightComponent->innerAngle = 10.0f;
-			lightComponent->outerAngle = 30.0f;
-			actor->AddComponent(std::move(lightComponent));
-			m_scene->Add(std::move(actor));
-		}
-
-		{
-			auto actor = CREATE_CLASS(Actor);
-			actor->name = "camera1";
-			actor->transform.position = glm::vec3{ 0, 0, 5 };
-			actor->transform.rotation = glm::radians(glm::vec3{ 0, 100, 0 });
-
-			auto cameraComponent = CREATE_CLASS(CameraComponent);
-			cameraComponent->SetPerspective(70.0f, ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.1f, 100.0f);
-			actor->AddComponent(std::move(cameraComponent));
-
-			auto cameraController = CREATE_CLASS(CameraController);
-			cameraController->speed = 5;
-			cameraController->sensitivity = 0.5f;
-			cameraController->m_owner = actor.get();
-			cameraController->Initialize();
-			actor->AddComponent(std::move(cameraController));
-
-			m_scene->Add(std::move(actor));
-		}
-
-		for (int i = 0; i < 10; i++)
-		{
-			auto actor = CREATE_CLASS_BASE(Actor, "tree");
-			actor->name = stringUtils.CreateUnique("tree");
-			actor->transform.position = glm::vec3{ randomf(-10, 10), 0 , randomf(-10, 10) };
-			actor->transform.scale = glm::vec3{ random(0.5f, 3.0f), random(0.5f, 3.0f), 0 };
-			actor->Initialize();
-			m_scene->Add(std::move(actor));
-		}
 
 		return true;
 	}
@@ -79,13 +31,14 @@ namespace Jackster
 		m_scene->Update(dt);
 		m_scene->ProcessGui();
 		
+		/*
 		auto actor = m_scene->GetActorByName<Actor>("actor1");
 
 		auto material = actor->GetComponent<ModelComponent>()->material;
 
 		material->ProcessGui();
 		material->Bind();
-
+		
 		material = GET_RESOURCE(Material, "materials/refraction.mtrl");
 
 		if (material)
@@ -97,6 +50,7 @@ namespace Jackster
 			program->SetUniform("ior", m_refraction);
 			ImGui::End();
 		}
+		*/
 		
 		ENGINE.GetSystem<Gui>()->EndFrame();
 	}

@@ -1,12 +1,11 @@
 #include "ModelComponent.h"
 #include "Framework/Actor.h"
 #include "Framework/Resource/ResourceManager.h"
-#include "Core/StringUtils.h"
 
 namespace Jackster
 {
 	CLASS_DEFINITION(ModelComponent)
-		StringUtils stringUtils;
+
 	bool ModelComponent::Initialize()
 	{
 		if (!modelName.empty())
@@ -46,7 +45,9 @@ namespace Jackster
 		std::string cullfaceName;
 		if (READ_NAME_DATA(value, "cullface", cullfaceName))
 		{
-			if (stringUtils.IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
+			if (StringUtils::IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
+			if (StringUtils::IsEqualIgnoreCase(cullfaceName, "back")) cullface = GL_BACK;
+			if (StringUtils::IsEqualIgnoreCase(cullfaceName, "front_and_back")) cullface = GL_FRONT_AND_BACK;
 		}
 	}
 }

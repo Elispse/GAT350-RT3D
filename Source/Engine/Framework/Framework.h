@@ -16,6 +16,8 @@
 #include "Components/PhysicsComponent.h"
 #include "Components/EnginePhysicsComponent.h"
 
+#include "Components/CollisionComponent.h"
+
 #include "Factory.h"
 #include "Resource/ResourceManager.h"
 #include "Event/EventManager.h"

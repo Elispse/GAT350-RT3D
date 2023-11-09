@@ -19,8 +19,11 @@ namespace Jackster
 		void SetActive(GLuint unit) { glActiveTexture(unit); }
 		void Bind() { glBindTexture(m_target, m_texture); }
 
-		friend class Renderer;
+		bool CreateTexture(int width, int height);
+		bool CreateDepthTexture(int width, int height);
 
+		friend class Renderer;
+		friend class Framebuffer;
 	protected:
 		GLuint m_texture = 0;
 		GLenum m_target = GL_TEXTURE_2D;

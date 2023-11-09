@@ -13,7 +13,7 @@ namespace Jackster
 		{
 			// set aspect with renderer width / renderer height (make sure it is a floating point division)
 			// aspect = width / height;
-			aspect = static_cast<float>(Renderer().GetWidth() / Renderer().GetHeight());
+			aspect = static_cast<float>(ENGINE.GetSystem<Renderer>()->GetWidth()) / static_cast<float>(ENGINE.GetSystem<Renderer>()->GetHeight());
 		}
 
 		return true;
@@ -23,10 +23,10 @@ namespace Jackster
 	{
 		// set view matrix with glm::lookAt function, use owner position
 		// view = glm::lookAt(<owner transform position>, <owner transform position + owner transform forward>, <up vector>);
-		view = glm::lookAt(this->m_owner->transform.position, this->m_owner->transform.position + this->m_owner->transform.Forward(), m_owner->transform.Up());
+		view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), m_owner->transform.Up());
 		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
 		// projection = glm::perspective(<parameters>);
-		projection = glm::perspective(glm::radians(fov), aspect, 0.01f, 100.0f);
+		projection = glm::perspective(glm::radians(fov), aspect, near, far);
 	}
 
 	void CameraComponent::SetPerspective(float fov, float aspect, float near, float far)
@@ -39,7 +39,7 @@ namespace Jackster
 
 		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
 		// projection = glm::perspective(<parameters>);
-		projection = glm::perspective(glm::radians(this->fov), this->aspect, this->near, this->far);
+		projection = glm::perspective(glm::radians(fov), aspect, near, far);
 	}
 
 	void CameraComponent::SetLookAt(const glm::vec3& eye, const glm::vec3& center, const glm::vec3& up)

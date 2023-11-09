@@ -7,21 +7,23 @@ namespace Jackster
 	class LightComponent : public Component
 	{
 	public:
-		CLASS_DECLARATION(LightComponent)
-
-		bool Initialize() override;
-		void Update(float dt) override;
-		void SetProgram(const res_t<Program> program, const std::string& name);
-
-		void ProcessGui() override;
-
-	public:
 		enum eType
 		{
 			Point,
 			Directional,
 			Spot
 		};
+
+	public:
+		CLASS_DECLARATION(LightComponent)
+
+		bool Initialize() override;
+		void Update(float dt) override;
+
+		void SetProgram(const res_t<Program> program, const std::string& name);
+
+		void ProcessGui() override;
+
 
 		eType type = eType::Point;
 		glm::vec3 color{ 1 };

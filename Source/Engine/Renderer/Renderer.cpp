@@ -19,6 +19,7 @@ namespace Jackster
 
 	void Renderer::Shutdown()
 	{
+		SDL_GL_DeleteContext(m_context);
 		SDL_DestroyWindow(m_window);
 		TTF_Quit();
 		IMG_Quit();
@@ -66,10 +67,10 @@ namespace Jackster
 		glFrontFace(GL_CCW);
 	}
 
-	void Renderer::BeginFrame()
+	void Renderer::BeginFrame(const glm::vec3& color)
 	{
 		glDepthMask(GL_TRUE);
-		glClearColor(0, 0, 0, 1);
+		glClearColor(color.r, color.g, color.b, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 

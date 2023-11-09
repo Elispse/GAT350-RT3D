@@ -2,6 +2,7 @@
 #include "Framework/Resource/Resource.h"
 #include "VertexBuffer.h"
 #include "Material.h"
+#include "glm/glm/glm.hpp"
 
 struct aiNode;
 struct aiMesh;
@@ -19,6 +20,7 @@ namespace Jackster
 			glm::vec2 texcoord;
 			glm::vec3 normal;
 			glm::vec3 tangent;
+			glm::mat4 m_transform;
 		};
 
 	public:
@@ -26,6 +28,7 @@ namespace Jackster
 		bool Load(const std::string& filename, const glm::vec3& translate = glm::vec3(0), const glm::vec3& rotation = glm::vec3(0), const glm::vec3& scale = glm::vec3(1));
 		void Draw(GLenum primitive = GL_TRIANGLES);
 
+		void Rotate(float angle, const glm::vec3& axis);
 	private:
 		void ProcessNode(aiNode* node, const aiScene* scene, const glm::mat4& transform);
 		void ProcessMesh(aiMesh* mesh, const aiScene* scene, const glm::mat4& transform);
