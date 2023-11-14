@@ -59,6 +59,11 @@ namespace Jackster
 			if (effect) m_params |= GRAYSCALE_MASK;
 			else m_params ^= GRAYSCALE_MASK;
 		}
+		effect = m_params & COLORTINT_MASK;
+		if (ImGui::Checkbox("Color Tint", &effect))
+		{
+			(effect) ? m_params |= COLORTINT_MASK : m_params &= COLORTINT_MASK;
+		}
 		ImGui::End();
 
 		// set postprocess shader

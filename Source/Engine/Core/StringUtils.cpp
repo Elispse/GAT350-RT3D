@@ -1,10 +1,8 @@
 #include "StringUtils.h"
-#include <iostream>
-#include <cctype>
 
 namespace Jackster
 {
-    std::string StringUtils::toUpper(std::string input)
+    std::string ToUpper(std::string input)
     {
         // this function takes the char& from the input string
         // then modifies that specific character in the string to upper
@@ -15,7 +13,7 @@ namespace Jackster
         return input;
     }
 
-    std::string StringUtils::toLower(std::string input)
+    std::string ToLower(std::string input)
     {
         // this function takes the char& from the input string
         // then modifies that specific character in the string to lower
@@ -26,13 +24,13 @@ namespace Jackster
         return input;
     }
 
-    bool StringUtils::IsEqualIgnoreCase(std::string input1, std::string input2)
+    bool IsEqualIgnoreCase(std::string input1, std::string input2)
     {
         bool isEqual = false;
     
         // sets both inputs to lowercase to easily compare
-        std::string low1 = toLower(input1);
-        std::string low2 = toLower(input2);
+        std::string low1 = ToLower(input1);
+        std::string low2 = ToLower(input2);
         // checks if each string now equals eachother
         if (low1 == low2)
         {
@@ -41,7 +39,7 @@ namespace Jackster
         return isEqual;
     }
 
-    std::string StringUtils::CreateUnique(const std::string& str)
+    std::string CreateUnique(const std::string& str)
     {
         static uint32_t unique = 0;
 

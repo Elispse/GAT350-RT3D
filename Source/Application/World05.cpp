@@ -9,9 +9,8 @@ namespace Jackster
 
 	bool World05::Initialize()
 	{
-		StringUtils stringUtils;
 		m_scene = std::make_unique<Scene>();
-		m_scene->Load("Scenes/scene.json");
+		m_scene->Load("scenes/scene.json");
 		m_scene->Initialize();
 
 		return true;
@@ -31,8 +30,8 @@ namespace Jackster
 		m_scene->Update(dt);
 		m_scene->ProcessGui();
 		
-		/*
-		auto actor = m_scene->GetActorByName<Actor>("actor1");
+		
+		auto actor = m_scene->GetActorByName<Actor>("actor3");
 
 		auto material = actor->GetComponent<ModelComponent>()->material;
 
@@ -50,7 +49,7 @@ namespace Jackster
 			program->SetUniform("ior", m_refraction);
 			ImGui::End();
 		}
-		*/
+		
 		
 		ENGINE.GetSystem<Gui>()->EndFrame();
 	}

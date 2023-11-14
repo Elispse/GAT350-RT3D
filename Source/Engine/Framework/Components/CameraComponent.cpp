@@ -75,5 +75,9 @@ namespace Jackster
 		READ_DATA(value, aspect);
 		READ_DATA(value, near);
 		READ_DATA(value, far);
+
+		std::string projectionTypeName;
+		//READ_NAME_DATA(value, "projectionType", projectionTypeName);
+		//if (IsEqualIgnoreCase("orthographic", projectionTypeName)) projectionType = ;
 	}
 }

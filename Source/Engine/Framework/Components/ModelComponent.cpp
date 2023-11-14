@@ -26,7 +26,9 @@ namespace Jackster
 
 	void ModelComponent::Draw(Renderer& renderer)
 	{
+		
 		material->Bind();
+		
 		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
 
 		glDepthMask(enableDepth);
@@ -38,6 +40,7 @@ namespace Jackster
 	void ModelComponent::Read(const json_t& value)
 	{
 		READ_DATA(value, modelName);
+
 		READ_DATA(value, materialName);
 
 		READ_DATA(value, enableDepth);
@@ -45,9 +48,9 @@ namespace Jackster
 		std::string cullfaceName;
 		if (READ_NAME_DATA(value, "cullface", cullfaceName))
 		{
-			if (StringUtils::IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
-			if (StringUtils::IsEqualIgnoreCase(cullfaceName, "back")) cullface = GL_BACK;
-			if (StringUtils::IsEqualIgnoreCase(cullfaceName, "front_and_back")) cullface = GL_FRONT_AND_BACK;
+			if (IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
+			if (IsEqualIgnoreCase(cullfaceName, "back")) cullface = GL_BACK;
+			if (IsEqualIgnoreCase(cullfaceName, "front_and_back")) cullface = GL_FRONT_AND_BACK;
 		}
 	}
 }

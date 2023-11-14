@@ -35,7 +35,7 @@ namespace Jackster
 	template<typename T>
 	inline bool ResourceManager::Add(const std::string& name, res_t<T> resource)
 	{
-		std::string lname = StringUtils::toLower(name);
+		std::string lname = ToLower(name);
 		if (m_resources.find(lname) != m_resources.end())
 		{
 			WARNING_LOG("Resource already exists: " << lname);
@@ -49,7 +49,7 @@ namespace Jackster
 	template<typename T, typename ...TArgs>
 	inline res_t<T> ResourceManager::Get(const std::string& filename, TArgs ...args)
 	{
-		std::string lfilename = StringUtils::toLower(filename);
+		std::string lfilename = ToLower(filename);
 		// find resource in resources map
 		if (m_resources.find(lfilename) != m_resources.end())
 		{
@@ -86,7 +86,6 @@ namespace Jackster
 				result.push_back(res);
 			}
 		}
-
 		return result;
 	}
 }
