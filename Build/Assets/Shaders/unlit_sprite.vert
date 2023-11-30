@@ -14,8 +14,8 @@ uniform struct Material
 } material;
 
 uniform mat4 model;
-uniform mat4 view;
 uniform mat4 projection;
+uniform mat4 view;
 
 void main()
 {
@@ -34,5 +34,5 @@ void main()
 	position = position + (vposition.x * right * size.x) + (vposition.y * up * size.y);
 
 	mat4 vp = projection * view;
-	gl_Position = vp * vec4(vposition, 1.0);
+	gl_Position = vp * vec4(position, 1.0);
 }

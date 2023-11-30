@@ -41,6 +41,8 @@ namespace Jackster
 		void SetViewport(int width, int height);
 		void ResetViewport();
 
+		void ClearDepth();
+
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 

@@ -22,6 +22,8 @@ namespace Jackster
 		bool CreateTexture(int width, int height);
 		bool CreateDepthTexture(int width, int height);
 
+		void ProcessGui() override;
+
 		friend class Renderer;
 		friend class Framebuffer;
 	protected:

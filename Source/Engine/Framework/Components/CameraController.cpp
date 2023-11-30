@@ -40,12 +40,12 @@ namespace Jackster
 
 		glm::vec3 direction{ 0 };
 
-		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A)) direction.x += 1;
-		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D)) direction.x -= 1;
-		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_E)) direction.y += 1;
-		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Q)) direction.y -= 1;
-		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W)) direction.z += 1;
-		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S)) direction.z -= 1;
+		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A)) direction.x += 1.5;
+		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D)) direction.x -= 1.5;
+		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_E)) direction.y += 1.5;
+		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_Q)) direction.y -= 1.5;
+		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W)) direction.z += 1.5;
+		if (ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S)) direction.z -= 1.5;
 
 		// convert world direction space to camera space
 		direction = m_owner->transform.rotation * direction;

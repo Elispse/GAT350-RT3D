@@ -14,8 +14,9 @@ namespace Jackster
 		~Framebuffer();
 
 		bool Create(std::string filename, ...) override;
-		bool CreateFramebuffer(res_t<Texture> texture);
-		bool CreateDepthbuffer(int width, int height);
+		bool CreateFrameBuffer(res_t<Texture> texture);
+		bool CreateDepthBuffer(int width, int height);
+		bool CreateDepthBuffer(res_t<Texture> texture);
 
 		void Bind();
 		void Unbind();

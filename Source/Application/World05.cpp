@@ -1,6 +1,7 @@
 #include "World05.h"
 #include "Framework/Framework.h"
 #include "Input/InputSystem.h"
+#include "Framework/Components/RotateComponent.h"
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <glm/glm/gtx/color_space.hpp>
 
@@ -30,8 +31,9 @@ namespace Jackster
 		m_scene->Update(dt);
 		m_scene->ProcessGui();
 		
-		
-		auto actor = m_scene->GetActorByName<Actor>("actor3");
+		/*
+		auto actor = m_scene->GetActorByName<Actor>("ogre-refraction");
+		actor->GetComponent<RotateComponent>()->Update(dt);
 
 		auto material = actor->GetComponent<ModelComponent>()->material;
 
@@ -49,8 +51,8 @@ namespace Jackster
 			program->SetUniform("ior", m_refraction);
 			ImGui::End();
 		}
-		
-		
+		*/
+
 		ENGINE.GetSystem<Gui>()->EndFrame();
 	}
 

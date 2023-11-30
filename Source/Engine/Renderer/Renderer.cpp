@@ -114,6 +114,11 @@ namespace Jackster
 		glViewport(0, 0, m_width, m_height);
 	}
 
+	void Renderer::ClearDepth()
+	{
+		glClear(GL_DEPTH_BUFFER_BIT);
+	}
+
 	void APIENTRY DebugCallback(GLenum source, GLenum type, GLuint id,
 		GLenum severity, GLsizei length, const GLchar* message, const void* param) {
 

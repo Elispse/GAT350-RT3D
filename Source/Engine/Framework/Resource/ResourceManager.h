@@ -8,8 +8,9 @@
 #include <string>
 #include <vector>
 
-#define GET_RESOURCE(type, filename, ...) Jackster::ResourceManager::Instance().Get<type>(filename, __VA_ARGS__)
-#define ADD_RESOURCE(name, resource) Jackster::ResourceManager::Instance().Add(name, resource)
+#define GET_RESOURCE(type, filename, ...)	Jackster::ResourceManager::Instance().Get<type>(filename, __VA_ARGS__)
+#define GET_RESOURCES(type)					Jackster::ResourceManager::Instance().GetAllOfType<type>();
+#define ADD_RESOURCE(name, resource)		Jackster::ResourceManager::Instance().Add(name, resource)
 
 namespace Jackster
 {
@@ -41,6 +42,7 @@ namespace Jackster
 			WARNING_LOG("Resource already exists: " << lname);
 			return false;
 		}
+		resource->name = lname;
 		m_resources[lname] = resource;
 
 		return true;

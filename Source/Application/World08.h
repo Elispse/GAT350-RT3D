@@ -6,7 +6,7 @@
 
 namespace Jackster
 {
-	class World07 : public World
+	class World08 : public World
 	{
 	public:
 		const uint32_t INVERT_MASK	  = (1 << 0);

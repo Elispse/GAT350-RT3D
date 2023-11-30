@@ -4,7 +4,7 @@ in layout(location = 0) vec3 vposition;
 in layout(location = 1) vec2 vtexcoord;
 
 
-out layout(location = 1) vec2 otexcoord;
+out layout(location = 0) vec2 otexcoord;
 
 
 void main()
